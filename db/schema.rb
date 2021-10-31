@@ -10,10 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_125935) do
+ActiveRecord::Schema.define(version: 2021_10_31_132049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_bookmarks_on_course_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "campus", force: :cascade do |t|
+    t.bigint "citie_id", null: false
+    t.bigint "institution_id", null: false
+    t.string "name"
+    t.string "address"
+    t.string "website"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["citie_id"], name: "index_campus_on_citie_id"
+    t.index ["institution_id"], name: "index_campus_on_institution_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.bigint "state_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.bigint "campu_id", null: false
+    t.date "opening_date"
+    t.string "name"
+    t.string "degree"
+    t.string "modality"
+    t.string "shift"
+    t.integer "total_vacancies"
+    t.integer "semesters"
+    t.integer "hours"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campu_id"], name: "index_courses_on_campu_id"
+  end
+
+  create_table "institutions", force: :cascade do |t|
+    t.string "name"
+    t.string "initials"
+    t.string "website"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "initials"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +83,20 @@ ActiveRecord::Schema.define(version: 2021_10_31_125935) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.float "ling_score"
+    t.float "mat_score"
+    t.float "cr_score"
+    t.float "cn_score"
+    t.float "red_score"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "courses"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "campus", "cities", column: "citie_id"
+  add_foreign_key "campus", "institutions"
+  add_foreign_key "cities", "states"
+  add_foreign_key "courses", "campus"
 end
