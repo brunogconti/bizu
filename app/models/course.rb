@@ -1,3 +1,3 @@
 class Course < ApplicationRecord
-  belongs_to :campus
+  belongs_to :buildings_complex
 end
