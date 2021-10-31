@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "campus", force: :cascade do |t|
+  create_table "buildings_complexes", force: :cascade do |t|
     t.bigint "citie_id", null: false
     t.bigint "institution_id", null: false
     t.string "name"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
     t.string "website"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["citie_id"], name: "index_campus_on_citie_id"
-    t.index ["institution_id"], name: "index_campus_on_institution_id"
+    t.index ["citie_id"], name: "index_buildings_complexes_on_citie_id"
+    t.index ["institution_id"], name: "index_buildings_complexes_on_institution_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.bigint "campu_id", null: false
+    t.bigint "buildings_complex_id", null: false
     t.date "opening_date"
     t.string "name"
     t.string "degree"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
     t.integer "hours"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["campu_id"], name: "index_courses_on_campu_id"
+    t.index ["buildings_complex_id"], name: "index_courses_on_buildings_complex_id"
   end
 
   create_table "institutions", force: :cascade do |t|
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
 
   add_foreign_key "bookmarks", "courses"
   add_foreign_key "bookmarks", "users"
-  add_foreign_key "campus", "cities", column: "citie_id"
-  add_foreign_key "campus", "institutions"
+  add_foreign_key "buildings_complexes", "cities", column: "citie_id"
+  add_foreign_key "buildings_complexes", "institutions"
   add_foreign_key "cities", "states"
-  add_foreign_key "courses", "campus"
+  add_foreign_key "courses", "buildings_complexes"
 end

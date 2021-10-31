@@ -1,3 +1,3 @@
 class Course < ApplicationRecord
-  belongs_to :campu
+  belongs_to :campus
 end

@@ -1,6 +1,6 @@
-class CreateCampus < ActiveRecord::Migration[6.0]
+class CreateBuildingsComplexes < ActiveRecord::Migration[6.0]
   def change
-    create_table :campus do |t|
+    create_table :buildings_complexes do |t|
       t.references :citie, null: false, foreign_key: true
       t.references :institution, null: false, foreign_key: true
       t.string :name
