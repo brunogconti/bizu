@@ -1,4 +1,4 @@
 class Citie < ApplicationRecord
   has_many :units
-  has_manu :courses, through: :units
+  has_many :courses, through: :units
 end

@@ -3,6 +3,6 @@
 
 <ul>
   <%= @courses.each do |course|  %>
-  <li><%= course.name %> - <%= course.unit.name %> - <%= course.unit.citie.name %></li>
+  <li><%= course.name %> - <%= course.unit.name %> - <%= course.citie.name %> - <%= course.institution.name %></li>
   <% end %>
 </ul>
