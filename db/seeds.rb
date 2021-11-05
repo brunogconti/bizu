@@ -116,3 +116,27 @@ end
 puts "Courses update"
 
 # -----------------------------------
+
+puts "Start creating segments"
+
+Course.all.each do |course|
+  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
+
+  hash_array.each do |hash|
+    hash["notasDeCorte"].each do |segment|
+      puts "Creating #{segment['descricao']} - #{segment['ano']}"
+      Segment.create!(
+        course: course,
+        name: segment['descricao'],
+        sisu_edition: segment['ano'],
+        score: segment['nota']
+      )
+    end
+  end
+end
+
+puts "Segments create"
+
+# -----------------------------------
