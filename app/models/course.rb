@@ -1,3 +1,6 @@
 class Course < ApplicationRecord
-  belongs_to :buildings_complex
+  has_many :bookmarks
+  has_many :reviews
+  has_many :segments
+  belongs_to :unit
 end

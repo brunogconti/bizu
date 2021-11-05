@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BuildingComplexTest < ActiveSupport::TestCase
+class SegmentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

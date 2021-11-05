@@ -1,4 +1,6 @@
 class BookmarksController < ApplicationController
+  skip_before_action :authenticate_user!, only: %I[index]
+
   def index
     @bookmarks = Bookmark.all.where(user: current_user)
   end
@@ -9,7 +11,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to bookmarks_path
     else
-      # TO DO
+      render 'courses/show'
     end
   end
 
