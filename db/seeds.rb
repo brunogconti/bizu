@@ -65,7 +65,7 @@ puts "Campi created"
 
 puts "Start creating courses"
 
-Unit.all.each do |campus|
+Unit.where(institution_id: 42).each do |campus|
   uri = URI("https://sisusimulator.com.br/api/searchcursoscampus.php?universidade=#{campus.slugUni}&campus=#{campus.slug}")
   response = Net::HTTP.get(uri)
   hash_array = JSON.parse(response)
@@ -86,33 +86,33 @@ puts "Courses created"
 
 # ------------------------------------
 
-# puts "Start updating courses"
+puts "Start updating courses"
 
-# Course.all.each do |course|
-#   uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
-#   response = Net::HTTP.get(uri)
-#   hash_array = JSON.parse(response)
+Course.all.each do |course|
+  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
 
-#   hash_array.each do |hash|
-#     puts "Updating #{hash['nome']} - #{hash['universidade']} | #{hash['cidade']}"
-#     course.update!(
-#       weight_lin: hash['pesoLing'],
-#       weight_mat: hash['pesoMat'],
-#       weight_ch: hash['pesoCH'],
-#       weight_cn: hash['pesoCN'],
-#       weight_red: hash['pesoRed'],
-#       min_lin: hash['mediaMinLin'],
-#       min_mat: hash['mediaMinMat'],
-#       min_ch: hash['mediaMinCH'],
-#       min_cn: hash['mediaMinCN'],
-#       min_red: hash['mediaMinRed'],
-#       min_geral: hash['mediaMinGeral'],
-#       bonus: hash['bonus'],
-#       bonus_comment: hash['bonusComentario']
-#     )
-#   end
-# end
+  hash_array.each do |hash|
+    puts "Updating #{hash['nome']} - #{hash['universidade']} | #{hash['cidade']}"
+    course.update!(
+      weight_lin: hash['pesoLing'],
+      weight_mat: hash['pesoMat'],
+      weight_ch: hash['pesoCH'],
+      weight_cn: hash['pesoCN'],
+      weight_red: hash['pesoRed'],
+      min_lin: hash['mediaMinLin'],
+      min_mat: hash['mediaMinMat'],
+      min_ch: hash['mediaMinCH'],
+      min_cn: hash['mediaMinCN'],
+      min_red: hash['mediaMinRed'],
+      min_geral: hash['mediaMinGeral'],
+      bonus: hash['bonus'],
+      bonus_comment: hash['bonusComentario']
+    )
+  end
+end
 
-# puts "Courses update"
+puts "Courses update"
 
 # -----------------------------------

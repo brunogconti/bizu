@@ -101,14 +101,14 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
   end
 
   create_table "segments", force: :cascade do |t|
-    t.bigint "courses_id", null: false
+    t.bigint "course_id", null: false
     t.string "name"
     t.string "sisu_edition"
     t.float "score"
     t.integer "vacancies"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["courses_id"], name: "index_segments_on_courses_id"
+    t.index ["course_id"], name: "index_segments_on_course_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
   add_foreign_key "courses", "units"
   add_foreign_key "reviews", "courses"
   add_foreign_key "reviews", "users"
-  add_foreign_key "segments", "courses", column: "courses_id"
+  add_foreign_key "segments", "courses"
   add_foreign_key "units", "cities", column: "citie_id"
   add_foreign_key "units", "institutions"
 end
