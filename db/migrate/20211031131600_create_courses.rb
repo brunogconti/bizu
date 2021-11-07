@@ -4,6 +4,7 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.references :unit, null: false, foreign_key: true
       t.string :opening_date
       t.string :name
+      t.text :abstract
       t.string :degree
       t.string :shift
       t.string :periodization
