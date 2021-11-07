@@ -1,1 +1,53 @@
-<h1>Testando</h1>
+<h5>Visão Geral</h5>
+  <div class="d-flex"><i class="fas fa-heart" aria-hidden="true"></i><p>Criação: <%= @course.opening_date %></p></div>
+  <div class="d-flex"><i class="fas fa-heart" aria-hidden="true"></i><p>Grau <%= @course.degree %></p></div>
+  <div class="d-flex"><i class="fas fa-heart" aria-hidden="true"></i><p>Turno: <%= @course.shift %></p></div>
+  <div class="d-flex"><i class="fas fa-heart" aria-hidden="true"></i><p>Integralização: <%= @course.periodization_num %>(<%= @course.periodization %>)</p></div>
+  <div class="d-flex"><i class="fas fa-heart" aria-hidden="true"></i><p>Carga Horária: <%= @course.hours %></p></div>
+  <div class="d-flex"><i class="fas fa-heart" aria-hidden="true"></i><p>Vagas Total: <%= @course.vacancies %></p></div>
+<span class="br-divider sm my-3"></span>
+  <h5>Mais sobre o curso</h5>
+  <!-- <p><%= @course.abstract %></p> -->
+  <span class="br-divider sm my-3"></span>
+  <h5>Índices - MEC</h5>
+  <div class="d-flex justify-content-around">
+    <div>
+      <h6>ENADE</h6>
+      <p><%= @course.enade %></p>
+    </div>
+    <div>
+      <h6>CPC</h6>
+      <p><%= @course.cpc %></p>
+    </div>
+    <div>
+      <h6>CC</h6>
+      <p><%= @course.cc %></p>
+    </div>
+    <div>
+      <h6>IDD</h6>
+      <p><%= @course.idd %></p>
+    </div>
+  </div>
+<span class="br-divider sm my-3"></span>
+  <h5>Informações SISU</h5>
+  <div class="d-flex justify-content-around">
+    <div>
+    <p>Nota Mínima em Linguagens: <%= @course.min_lin %></p>
+    <p>Nota Mínima em Matématica: <%= @course.min_mat %></p>
+    <p>Nota Mínima em Ciências Humanas: <%= @course.min_ch %></p>
+    <p>Nota Mínima em Ciências da Natureza: <%= @course.min_cn %></p>
+    <p>Nota Mínima em Redação: <%= @course.min_red %></p>
+    <p>Nota Mínima Geral: <%= @course.min_geral %></p>
+    </div>
+    <div>
+    <p>Peso em Linguagens: <%= @course.weight_lin %></p>
+    <p>Peso em Matématica: <%= @course.weight_mat %></p>
+    <p>Peso em Ciências Humanas: <%= @course.weight_ch %></p>
+    <p>Peso em Ciências da Natureza: <%= @course.weight_cn %></p>
+    <p>Peso em Redação: <%= @course.weight_red %></p>
+    <p>Bônus: <%= @course.bonus %></p>
+    <p><%= @course.bonus_comment %></p>
+    </div>
+  </div>
+<span class="br-divider sm my-3"></span>
+  <h5>Informações de Contato</h5>
