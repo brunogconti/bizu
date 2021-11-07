@@ -2,19 +2,59 @@
 <html>
   <head>
     <title>Bizu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Font Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"/>
+     <!-- Font Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"/>
+    <!-- Fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
-    <%= yield %>
+    <div class="template-base">
+      <!-- Atalhos de Teclado aqui -->
+      <nav id="skip-links">
+        <%= render 'shared/shortcuts' %>
+      </nav>
+      <!-- Header aqui -->
+      <header class="br-header compact" id="header" data-sticky>
+        <%= render 'shared/header' %>
+      </header>
+      <!-- Área de conteúdo -->
+      <main id="main" class="d-flex flex-fill">
+          <!-- Define a largura da página -->
+          <div class="container-lg d-flex">
+              <div class="row">
+                  <!-- Menu aqui -->
+                  <div class="br-menu pt-md-3" id="main-navigation">
+                  <%= render 'shared/menu' %>
+                  </div>
+                  <!-- Coluna do conteúdo aqui -->
+                  <div class="col pt-3 pb-5">
+                      <!-- Breadcrumbs aqui -->
+                      <div class="br-breadcrumb">
+                        <%= render 'shared/breadcrumbs' %>
+                      </div>
+                      <!-- Conteúdo Principal aqui -->
+                      <div id="main-content" class="main-content pl-sm-3">
+                        <%= yield %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </main>
+      <!-- Footer aqui -->
+      <footer id="footer" class="br-footer">
+        <%= render 'shared/footer' %>
+      </footer>
+  </div>
   </body>
 </html>
