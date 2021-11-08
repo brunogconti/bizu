@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_132049) do
+ActiveRecord::Schema.define(version: 2021_11_08_015530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,8 +122,6 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
     t.string "slug"
     t.string "slug_uni"
     t.string "address"
-    t.string "website"
-    t.string "instagram"
     t.text "abstract"
     t.boolean "internet"
     t.boolean "restaurant"
@@ -135,6 +133,8 @@ ActiveRecord::Schema.define(version: 2021_10_31_132049) do
     t.float "coffe_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["citie_id"], name: "index_units_on_citie_id"
     t.index ["institution_id"], name: "index_units_on_institution_id"
   end

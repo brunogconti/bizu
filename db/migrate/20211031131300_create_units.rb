@@ -7,8 +7,6 @@ class CreateUnits < ActiveRecord::Migration[6.0]
       t.string :slug
       t.string :slug_uni
       t.string :address
-      t.string :website
-      t.string :instagram
       t.text :abstract
       t.boolean :internet
       t.boolean :restaurant
