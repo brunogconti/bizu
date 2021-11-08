@@ -2,7 +2,7 @@
   "name": "bizu",
   "private": true,
   "engines": {
-    "node": "14.15",
+    "node": "14.15.5",
     "yarn": "1.22"
   },
   "dependencies": {
