@@ -158,7 +158,8 @@ end
 
 puts "Segments create"
 
------------------------------------
+# -----------------------------------
+
 puts "Start updating cities"
 
 Citie.where(["id > ? OR id < ?", 484, 484]).order('id asc').each do |citie|
@@ -362,5 +363,4 @@ Institution.all.order('id asc').each do |ies|
 end
 
 puts "Institutions updated"
-
 # -----------------------------------
