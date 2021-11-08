@@ -1,6 +1,10 @@
 {
   "name": "bizu",
   "private": true,
+  "engines": {
+    "node": "14.15",
+    "yarn": "1.22"
+  },
   "dependencies": {
     "@govbr/dsgov": "file:dsgov-latest.tgz",
     "@rails/actioncable": "^6.0.0",
