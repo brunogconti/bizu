@@ -4,161 +4,161 @@ require 'nokogiri'
 require 'csv'
 require 'faker'
 
-# # ------------------------------------
+# ------------------------------------
 
-# puts 'Start creating cities'
+puts 'Start creating cities'
 
-# uri = URI("https://sisusimulator.com.br/api/searchcity")
-# response = Net::HTTP.get(uri)
-# hash_array = JSON.parse(response)
+uri = URI("https://sisusimulator.com.br/api/searchcity")
+response = Net::HTTP.get(uri)
+hash_array = JSON.parse(response)
 
-# hash_array.each do |hash|
-#   puts "creating #{hash['nome']}"
-#   Citie.create!(
-#     name: hash['nome'],
-#     slug: hash['slug'],
-#     state: hash['uf'],
-#     abstract: Faker::Lorem.paragraphs,
-#     bus_cost: [4, 4.5, 5, 5.5, 6].sample
-#   )
-# end
-# puts "Cities created"
+hash_array.each do |hash|
+  puts "creating #{hash['nome']}"
+  Citie.create!(
+    name: hash['nome'],
+    slug: hash['slug'],
+    state: hash['uf'],
+    abstract: Faker::Lorem.paragraphs,
+    bus_cost: [4, 4.5, 5, 5.5, 6].sample
+  )
+end
+puts "Cities created"
 
-# # ------------------------------------
+# ------------------------------------
 
-# puts "Start creating universities"
+puts "Start creating universities"
 
-# uri = URI("https://sisusimulator.com.br/api/searchuniversidades/")
-# response = Net::HTTP.get(uri)
-# hash_array = JSON.parse(response)
+uri = URI("https://sisusimulator.com.br/api/searchuniversidades/")
+response = Net::HTTP.get(uri)
+hash_array = JSON.parse(response)
 
-# hash_array.each do |hash|
-#   puts "creating #{hash['nome'].downcase.split('-')[0].split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' ')}"
-#   Institution.create!(
-#     name: hash['nome'].downcase.split('-')[0].split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
-#     initials: hash['nome'].split(' - ')[1],
-#     slug: hash['slug'],
-#     abstract: Faker::Lorem.paragraphs,
-#     website: "www.#{hash['slug']}.edu.br",
-#     instagram: "@#{hash['slug']}"
-#   )
-# end
+hash_array.each do |hash|
+  puts "creating #{hash['nome'].downcase.split('-')[0].split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' ')}"
+  Institution.create!(
+    name: hash['nome'].downcase.split('-')[0].split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
+    initials: hash['nome'].split(' - ')[1],
+    slug: hash['slug'],
+    abstract: Faker::Lorem.paragraphs,
+    website: "www.#{hash['slug']}.edu.br",
+    instagram: "@#{hash['slug']}"
+  )
+end
 
-# puts "Universities created"
+puts "Universities created"
 
-# # ------------------------------------
+# ------------------------------------
 
-# puts "Start creating campi"
+puts "Start creating campi"
 
-# Institution.all.each do |ies|
-#   uri = URI("https://sisusimulator.com.br/api/searchcampus.php?type=universidade&universidade=#{ies.slug}")
-#   response = Net::HTTP.get(uri)
-#   hash_array = JSON.parse(response)
+Institution.all.each do |ies|
+  uri = URI("https://sisusimulator.com.br/api/searchcampus.php?type=universidade&universidade=#{ies.slug}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
 
-#   hash_array.each do |hash|
-#     puts "Creating #{hash['campus']}"
-#     Unit.create!(
-#       citie: Citie.find_by(name: hash['cidade'], state: hash['uf']),
-#       institution: Institution.find_by(slug: hash['slugUni']),
-#       name: hash['campus'].downcase.split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
-#       address: hash['campus'].downcase.split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
-#       slug: hash['slug'],
-#       slug_uni: hash['slugUni'],
-#       abstract: Faker::Lorem.paragraphs,
-#       internet: [true, true, true, true, false].sample,
-#       restaurant: [false, false, false, false, true].sample,
-#       accomodation: [false, false, false, false, true].sample,
-#       transport: [false, false, false, false, true].sample,
-#       sports_playground: [false, false, false, false, true].sample,
-#       xerox_cost: [0.2, 0.25, 0.3, 0.35, 0.4].sample,
-#       snack_plus_drink_price: [5, 5.5, 6, 6.5, 7, 7.5].sample,
-#       coffe_price: [2, 2.5, 3, 3.5].sample
-#     )
-#   end
-# end
+  hash_array.each do |hash|
+    puts "Creating #{hash['campus']}"
+    Unit.create!(
+      citie: Citie.find_by(name: hash['cidade'], state: hash['uf']),
+      institution: Institution.find_by(slug: hash['slugUni']),
+      name: hash['campus'].downcase.split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
+      address: hash['campus'].downcase.split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
+      slug: hash['slug'],
+      slug_uni: hash['slugUni'],
+      abstract: Faker::Lorem.paragraphs,
+      internet: [true, true, true, true, false].sample,
+      restaurant: [false, false, false, false, true].sample,
+      accomodation: [false, false, false, false, true].sample,
+      transport: [false, false, false, false, true].sample,
+      sports_playground: [false, false, false, false, true].sample,
+      xerox_cost: [0.2, 0.25, 0.3, 0.35, 0.4].sample,
+      snack_plus_drink_price: [5, 5.5, 6, 6.5, 7, 7.5].sample,
+      coffe_price: [2, 2.5, 3, 3.5].sample
+    )
+  end
+end
 
-# puts "Campi created"
+puts "Campi created"
 
-# # ------------------------------------
+# ------------------------------------
 
-# puts "Start creating courses"
+puts "Start creating courses"
 
-# Unit.where(institution_id: 42).each do |campus|
-#   uri = URI("https://sisusimulator.com.br/api/searchcursoscampus.php?universidade=#{campus.slug_uni}&campus=#{campus.slug}")
-#   response = Net::HTTP.get(uri)
-#   hash_array = JSON.parse(response)
+Unit.where(institution_id: 42).each do |campus|
+  uri = URI("https://sisusimulator.com.br/api/searchcursoscampus.php?universidade=#{campus.slug_uni}&campus=#{campus.slug}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
 
-#   hash_array.each do |hash|
-#     puts "Creating #{hash['nome']} - #{hash['tipocurso']} | #{hash['turno']}"
-#     Course.create!(
-#       unit: Unit.find_by(slug: hash['slugCampus'], slug_uni: hash['slugUni']),
-#       name: hash['nome'].downcase.split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
-#       degree: hash['tipocurso'],
-#       shift: hash['turno'],
-#       api_id: hash['id'],
-#       abstract: Faker::Lorem.paragraphs
-#     )
-#   end
-# end
+  hash_array.each do |hash|
+    puts "Creating #{hash['nome']} - #{hash['tipocurso']} | #{hash['turno']}"
+    Course.create!(
+      unit: Unit.find_by(slug: hash['slugCampus'], slug_uni: hash['slugUni']),
+      name: hash['nome'].downcase.split.map { |word| word.length >= 3 ? word.capitalize : word}.join(' '),
+      degree: hash['tipocurso'],
+      shift: hash['turno'],
+      api_id: hash['id'],
+      abstract: Faker::Lorem.paragraphs
+    )
+  end
+end
 
-# puts "Courses created"
+puts "Courses created"
 
-# # ------------------------------------
+# ------------------------------------
 
-# puts "Start updating courses"
+puts "Start updating courses"
 
-# Course.all.each do |course|
-#   uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
-#   response = Net::HTTP.get(uri)
-#   hash_array = JSON.parse(response)
+Course.all.each do |course|
+  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
 
-#   hash_array.each do |hash|
-#     puts "Updating #{hash['nome']} - #{hash['universidade']} | #{hash['cidade']}"
-#     course.update!(
-#       weight_lin: hash['pesoLing'],
-#       weight_mat: hash['pesoMat'],
-#       weight_ch: hash['pesoCH'],
-#       weight_cn: hash['pesoCN'],
-#       weight_red: hash['pesoRed'],
-#       min_lin: hash['mediaMinLin'],
-#       min_mat: hash['mediaMinMat'],
-#       min_ch: hash['mediaMinCH'],
-#       min_cn: hash['mediaMinCN'],
-#       min_red: hash['mediaMinRed'],
-#       min_geral: hash['mediaMinGeral'],
-#       bonus: hash['bonus'],
-#       bonus_comment: hash['bonusComentario']
-#     )
-#   end
-# end
+  hash_array.each do |hash|
+    puts "Updating #{hash['nome']} - #{hash['universidade']} | #{hash['cidade']}"
+    course.update!(
+      weight_lin: hash['pesoLing'],
+      weight_mat: hash['pesoMat'],
+      weight_ch: hash['pesoCH'],
+      weight_cn: hash['pesoCN'],
+      weight_red: hash['pesoRed'],
+      min_lin: hash['mediaMinLin'],
+      min_mat: hash['mediaMinMat'],
+      min_ch: hash['mediaMinCH'],
+      min_cn: hash['mediaMinCN'],
+      min_red: hash['mediaMinRed'],
+      min_geral: hash['mediaMinGeral'],
+      bonus: hash['bonus'],
+      bonus_comment: hash['bonusComentario']
+    )
+  end
+end
 
-# puts "Courses update"
-
-# # -----------------------------------
-
-# puts "Start creating segments"
-
-# Course.all.each do |course|
-#   uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
-#   response = Net::HTTP.get(uri)
-#   hash_array = JSON.parse(response)
-
-#   hash_array.each do |hash|
-#     hash["notasDeCorte"].each do |segment|
-#       puts "Creating #{segment['descricao']} - #{segment['ano']}"
-#       Segment.create!(
-#         course: course,
-#         name: segment['descricao'],
-#         sisu_edition: segment['ano'],
-#         score: segment['nota']
-#       )
-#     end
-#   end
-# end
-
-# puts "Segments create"
+puts "Courses update"
 
 # -----------------------------------
+
+puts "Start creating segments"
+
+Course.all.each do |course|
+  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
+
+  hash_array.each do |hash|
+    hash["notasDeCorte"].each do |segment|
+      puts "Creating #{segment['descricao']} - #{segment['ano']}"
+      Segment.create!(
+        course: course,
+        name: segment['descricao'],
+        sisu_edition: segment['ano'],
+        score: segment['nota']
+      )
+    end
+  end
+end
+
+puts "Segments create"
+
+-----------------------------------
 puts "Start updating cities"
 
 Citie.where(["id > ? OR id < ?", 484, 484]).order('id asc').each do |citie|
