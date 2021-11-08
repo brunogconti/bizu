@@ -34,13 +34,13 @@
 <div class="br-tab">
   <nav class="tab-nav">
     <ul>
-      <li class="tab-item">
+      <li class="tab-item active">
         <button type="button" data-panel="panel-1"><span class="name">Sobre</span></button>
       </li>
       <li class="tab-item">
-        <button type="button" data-panel="panel-2"><span class="name">Admissão</span></button>
+        <button type="button" data-panel="panel-2"><span class="name">SiSU</span></button>
       </li>
-      <li class="tab-item active">
+      <li class="tab-item">
         <button type="button" data-panel="panel-3"><span class="name">Campus</span></button>
       </li>
       <li class="tab-item">
@@ -48,22 +48,18 @@
       </li>
     </ul>
   </nav>
-  <div class="tab-content">
+  <div class="tab-content active">
     <div class="tab-panel" id="panel-1">
-      <p>Painel Sobre</p>
       <%= render 'courses/show/sobre', course: @course %>
     </div>
     <div class="tab-panel" id="panel-2">
-      <p>Painel Admissão</p>
-      <%# <%= render 'show/admissao', course: @course %>
+      <%= render 'courses/show/admissao', course: @course %>
     </div>
-    <div class="tab-panel active" id="panel-3">
-      <p>Painel Campus</p>
-      <%# <%= render 'show/campus', course: @course %>
+    <div class="tab-panel" id="panel-3">
+      <%= render 'courses/show/campus', course: @course %>
     </div>
     <div class="tab-panel" id="panel-4">
-      <p>Painel Cidade</p>
-      <%# <%= render 'show/cidade', course: @course %>
+      <%= render 'courses/show/cidade', course: @course %>
     </div>
   </div>
 </div>
