@@ -26,9 +26,21 @@
     <p><%= @course.institution.name %> - <%= @course.institution.initials %></p>
     <p><%= @course.unit.name %> - <%= @course.citie.name %></p>
   </div>
-  <button class="br-button secondary circle large mt-3 mt-sm-0 ml-sm-3" type="button" aria-label="Ícone ilustrativo">
-    <i class="fas fa-heart" aria-hidden="true"></i>
-  </button>
+    <% if @favorite.present? %>
+      <%= button_to [@bookmark], method: :delete, data: { confirm: "Are you sure?" },
+                                params: {course_id: params[:id]},
+                                # remote: true,
+                                class: "br-button secondary circle large mt-3 mt-sm-0 ml-sm-3" do %>
+      <i class="fas fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= button_to [@bookmark], method: :post,
+                                params: {course_id: params[:id]},
+                                # remote: true,
+                                class: "br-button secondary circle large mt-3 mt-sm-0 ml-sm-3" do %>
+      <i class="far fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
 </div>
 
 <div class="br-tab">
