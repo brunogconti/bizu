@@ -9,7 +9,7 @@
   <li><%= course.name %> - <%= course.unit.name %> - <%= course.citie.name %> - <%= course.institution.name %></li>
   <% end %>
 </ul> -->
-
+<%= render 'search' , courses: @courses %>
 <!-- Tags de Filtro -->
 <div class="br-tag interaction-select small">
   <input id="tag" type="checkbox" aria-label="selecionar tag" tabindex="0" />
