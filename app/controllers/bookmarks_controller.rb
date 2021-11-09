@@ -1,34 +1,32 @@
 class BookmarksController < ApplicationController
-  skip_before_action :authenticate_user!, only: %I[index]
+  skip_before_action :authenticate_user!, only: %i[index]
 
   def index
-    @bookmarks = Bookmark.all.where(user: current_user)
+    @bookmarks = Bookmark.where(user: current_user)
   end
 
   def create
-    raise
-    @course = Course.find(params[:bookmark][:course_id])
+    @course = Course.find(params[:course_id])
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.user = current_user
-    @bookmark.course = @course
     if @bookmark.save!
-      redirect_to course_path(@course)
+      redirect_to course_path(@course), notice: 'Curso adicionado aos favoritos!'
     else
       render 'courses/show'
     end
   end
 
   def destroy
-    @course = Course.find(params[:bookmark][:course_id])
+    @course = Course.find(params[:course_id])
     @bookmark = Bookmark.find_by(course: @course, user: current_user)
     # @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to course_path(@course), notice: 'bookmark was successfully destroyed.'
+    redirect_to course_path(@course), notice: 'Curso removido dos favoritos!'
   end
 
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:course_id, :comment)
+    params.permit(:course_id, :comment)
   end
 end
