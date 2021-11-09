@@ -1,1 +1,33 @@
-<h1>Testando</h1>
+<h5>Visão Geral</h5>
+<p><i class="fa fa-play" aria-hidden="true"></i> Inauguração:  <%= course.opening_date %></p>
+<p><i class="fa fa-graduation-cap" aria-hidden="true"></i> Grau:  <%= course.degree %></p>
+<p><i class="fa fa-calendar" aria-hidden="true"></i> Turno:  <%= course.shift %></p>
+<p><i class="fa fa-calendar" aria-hidden="true"></i> Periodização:  <%= course.periodization %></p>
+<p><i class="far fa-clock"></i> Carga Horária:  <%= course.hours %> horas</p>
+
+<span class="br-divider my-3"></span>
+
+<h5>Mais sobre o curso</h5>
+<p><%= course.abstract %></p>
+
+<span class="br-divider my-3"></span>
+
+<h5>Indicadores do MEC</h5>
+<div class="d-flex justify-content-around">
+  <div>
+    <h6>ENADE</h6>
+    <p><%= course.enade %></p>
+  </div>
+  <div>
+    <h6>CPC</h6>
+    <p><%= course.cpc %></p>
+  </div>
+  <div>
+    <h6>CC</h6>
+    <p><%= course.cc %></p>
+  </div>
+  <div>
+    <h6>IDD</h6>
+    <p><%= course.idd %></p>
+  </div>
+</div>

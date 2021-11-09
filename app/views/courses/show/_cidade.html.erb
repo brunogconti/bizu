@@ -1,0 +1,39 @@
+<h5><%= course.citie.name %> - <%= course.citie.state %></h5>
+<p><i class="fa fa-play" aria-hidden="true"></i> População: <%= course.citie.population %></p>
+<p><i class="fa fa-graduation-cap" aria-hidden="true"></i> IDH: <%= course.citie.idh %></p>
+<p><i class="fa fa-play" aria-hidden="true"></i> Passagem: R$<%= course.citie.bus_cost %></p>
+
+<span class="br-divider my-3"></span>
+
+<h5>Clima</h5>
+
+<table>
+  <tr>
+    <td>
+      <div>
+        <h6>Temperatura Max (Média):</h6>
+        <p><%= course.citie.max_temp_avg %></p>
+      </div>
+    </td>
+    <td>
+      <div>
+        <h6>Temperatura Min (Média):</h6>
+        <p><%= course.citie.min_temp_avg %></p>
+      </div>
+    </td>
+    <td>
+      <div></div>
+        <h6>Dias de Chuva (Ano):</h6>
+        <p><%= course.citie.rain_days %></p>
+      </div>
+    </td>
+    <td>
+      <div>
+        <h6>Horas de Luz (Ano):</h6>
+        <p><%= course.citie.daylight_hours %></p></td>
+      </div>
+  </tr>
+</table>
+
+<h5>Mais sobre a cidade</h5>
+<p><%= course.citie.abstract %></p>

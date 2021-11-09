@@ -1,0 +1,74 @@
+<h5>Informações do SiSU</h5>
+
+<table>
+  <tr>
+    <td>
+      <div>
+        <h6>Peso em Linguagens:</h6>
+        <p><%= course.weight_mat %></p>
+      </div>
+    </td>
+    <td>
+      <div>
+        <h6>Peso em Matemática:</h6>
+        <p><%= course.weight_mat %></p>
+      </div>
+    </td>
+    <td>
+      <div></div>
+        <h6>Peso em Ciências Humanas:</h6>
+        <p><%= course.weight_ch %></p>
+      </div>
+    </td>
+    <td>
+      <div>
+        <h6>Peso em Ciências da Natureza:</h6>
+        <p><%= course.weight_cn %></p></td>
+      </div>
+    <td>
+      <div>
+        <h6>Peso em Redação:</h6>
+        <p><%= course.weight_red %></p>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <h6>Mínimo em Linguagens</h6>
+        <p><%= course.min_lin %></p>
+      </div>
+    </td>
+    <td>
+      <div>
+        <h6>Mínimo em Matemática:</h6>
+        <p><%= course.min_mat %></p>
+      </div>
+    </td>
+    <td>
+      <div></div>
+        <h6>Mínimo em Ciências Humanas:</h6>
+        <p><%= course.min_ch %></p>
+      </div>
+    </td>
+    <td>
+      <div>
+        <h6>Mínimo em Ciências da Natureza:</h6>
+        <p><%= course.min_cn %></p></td>
+      </div>
+    <td>
+      <div>
+        <h6>Mínimo em Redação:</h6>
+        <p><%= course.min_red %></p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<h5>Últimos resultados do SiSU</h5>
+<p><i class="fa fa-play" aria-hidden="true"></i> Referência:  <%= course.segments.last.sisu_edition %></p>
+
+<p>tabela com as notas de corte aqui</p>
+<%# SELECT *
+FROM course.segments
+GROUP BY sisu_edition %>
