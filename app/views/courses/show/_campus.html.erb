@@ -1,0 +1,63 @@
+<h5><%= course.unit.name %></h5>
+<p><%= course.unit.address %> - <%=course.citie.state %></p>
+
+<span class="br-divider my-3"></span>
+
+<h5>Mais sobre o Campus</h5>
+<p><%= course.unit.abstract %></p>
+
+<span class="br-divider my-3"></span>
+
+<div class="d-flex">
+  <% if course.unit.internet %>
+    <div class="m-2">
+      <h6 class="text-center"><i class="fa fa-play" aria-hidden="true"></i></h6>
+      <p class="text-center">Internet Grátis</p>
+    </div>
+  <% end %>
+  <% if course.unit.restaurant %>
+    <div class="m-2">
+      <h6 class="text-center"><i class="fa fa-play" aria-hidden="true"></i></h6>
+      <p class="text-center">Restaurant Universitário</p>
+    </div>
+  <% end %>
+  <% if course.unit.accomodation %>
+    <div class="m-2">
+      <h6 class="text-center"><i class="fa fa-play" aria-hidden="true"></i></h6>
+      <p class="text-center">Alojamento</p>
+    </div>
+  <% end %>
+  <% if course.unit.transport %>
+    <div class="m-2">
+      <h6 class="text-center"><i class="fa fa-play" aria-hidden="true"></i></h6>
+      <p class="text-center">Transporte</p>
+    </div>
+  <% end %>
+  <% if course.unit.sports_playground %>
+    <div class="my-2">
+      <h6 class="text-center"><i class="fa fa-play" aria-hidden="true"></i></h6>
+      <p class="text-center">Área de Esportes</p>
+    </div>
+  <% end %>
+</div>
+
+<span class="br-divider my-3"></span>
+
+<h5>Preços</h5>
+<div class="d-flex justify-content-around">
+  <div>
+    <h6 class="text-center">Xerox</h6>
+    <p class="text-center">R$<%= course.unit.xerox_cost %></p>
+  </div>
+  <div>
+    <h6 class="text-center">Lanche</h6>
+    <p class="text-center">R$<%= course.unit.snack_plus_drink_price %></p>
+  </div>
+  <div>
+    <h6 class="text-center">Café</h6>
+    <p class="text-center">R$<%= course.unit.coffe_price %></p>
+  </div>
+</div>
+
+<span class="br-divider my-3"></span>
+<p>Mapa aqui?</p>

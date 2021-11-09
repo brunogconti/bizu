@@ -1,2 +1,19 @@
-<h1>Bookmarks#index</h1>
-<p>Find me in app/views/bookmarks/index.html.erb</p>
+<h1>Cursos favoritados</h1>
+<h2>Lista dos cursos escolhidos pelo usuário</h2>
+bookmarks
+
+
+
+<div class="cs-college-list-results-container" data-testid="college-list-results">
+
+
+  <% @bookmarks.each do |bookmarks|  %>
+  <div><%= course.name %> -
+   <%= course.unit.name %> -
+   <%= course.citie.name %> -
+   <%= course.institution.name %></div>
+  <% end %>
+
+
+
+</div>

@@ -1,0 +1,21 @@
+.br-card {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 1px;
+  padding: 5px;
+  opacity: 0.3;
+  color: antiquewhite;
+}
+
+.br-card .card-content {
+  text-align: justify;
+}
+
+.br-card .card-header {
+  text-align: center;
+}
+
+
+.br-card.hover {
+  cursor: pointer;
+}

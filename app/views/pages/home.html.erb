@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/C7B-ExXpOIE);">
+  <div class="container">
+    <h1>Estudar em uma faculdade passa por muitas <strong>escolhas</strong> compare os cursos e <strong>decida para onde quer ir</strong>!</h1>
+    <p>Veja as características de cada curso em nossa página</p>
+    <p><span id="banner-typed-text"></span></p>
+    <a class="br-button primary" link_to: courses >Index</a>
+  </div>
+</div>
+
+<% courses = Course.all %>
+  <% courses.each do |course| %>
+    <ul id="thisThing">
+      <% p "#{course.name}" %>
+    </ul>
+    <% system("clear") %>
+  <% end %>
+
+<% cityes = Citie.all %>
+  <% cityes.each do |city| %>
+    <ul>
+    <%city.name %>
+    </ul>
+  <% end %>
+
+<% its = Institution.all %>
+  <% its.each do |it| %>
+    <ul>
+    <%it.name %>
+    </ul>
+  <% end %>

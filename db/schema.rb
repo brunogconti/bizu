@@ -27,9 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
-    t.string "slug"
     t.string "state"
-    t.text "abstract"
     t.integer "population"
     t.float "idh"
     t.float "max_temp_avg"
@@ -45,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
     t.bigint "unit_id", null: false
     t.string "opening_date"
     t.string "name"
-    t.text "abstract"
     t.string "degree"
     t.string "shift"
     t.string "periodization"
@@ -79,12 +76,11 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
 
   create_table "institutions", force: :cascade do |t|
     t.string "name"
-    t.string "slug"
     t.string "initials"
+    t.string "slug"
     t.string "foundation"
     t.string "website"
     t.string "instagram"
-    t.text "abstract"
     t.integer "total_students"
     t.integer "ci"
     t.integer "igc"
@@ -119,10 +115,11 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
     t.bigint "citie_id", null: false
     t.bigint "institution_id", null: false
     t.string "name"
-    t.string "slug"
-    t.string "slug_uni"
     t.string "address"
-    t.text "abstract"
+    t.string "slug"
+    t.string "slugUni"
+    t.string "website"
+    t.string "instagram"
     t.boolean "internet"
     t.boolean "restaurant"
     t.boolean "accomodation"
