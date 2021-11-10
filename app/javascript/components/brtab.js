@@ -1,4 +1,4 @@
-import { event } from jQuery
+import { event } from 'jquery'
 
 class BRTab {
   constructor(name, component) {
