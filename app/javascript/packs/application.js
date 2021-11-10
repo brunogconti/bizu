@@ -37,8 +37,11 @@ document.addEventListener('turbolinks:load', () => {
 
 
 import { loadDynamicBannerText } from '../components/banner';
+import {tabActive} from '../components/tab';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   loadDynamicBannerText();
+  tabActive();
 });
