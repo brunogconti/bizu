@@ -1,0 +1,43 @@
+/*bookmark-card*/
+.bookmark-card {
+  overflow: hidden;
+  height: 120px;
+  background-color: rgb(155, 150, 150);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.bookmark-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.bookmark-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.bookmark-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.bookmark-card .bookmark-card-infos {
+  padding: 16px;
+}
+
+.bookmark-flex {
+  padding: 16px;
+  display: flex;
+  color: black;
+}
+
+.card-close {
+  align-items: flex-start;
+}
