@@ -1,11 +1,20 @@
 <h1>Cursos favoritados</h1>
 <h2>Lista dos cursos escolhidos pelo usuário</h2>
 
-<div class="cs-college-list-results-container" data-testid="college-list-results">
-  <% @bookmarks.each do |bookmark|  %>
-  <div><%= bookmark.course.name %> -
-   <%= bookmark.course.unit.name %> -
-   <%= bookmark.course.citie.name %> -
-   <%= bookmark.course.institution.name %></div>
-  <% end %>
+<div class="bookmark-container" data-testid="college-list-results">
+
+<% @bookmarks.each do |bookmark|  %>
+<div class="bookmark-card">
+  <img src="https://source.unsplash.com/NlFyPKxXORo" >
+  <div class="bookmark-flex">
+      <strong>Curso: </strong><%= bookmark.course.name %>
+      <%# <strong>Campus: </strong><%= bookmark.course.unit.name %>
+      <strong>Cidade: </strong><%= bookmark.course.citie.name %>
+      <strong>Faculdade: </strong><%= bookmark.course.institution.name %>
+      <div class="card-close"><i class="far fa-times-circle"></i></div>
+      </div>
+</div>
+    <% end %>
+
+
 </div>

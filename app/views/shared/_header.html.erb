@@ -16,8 +16,8 @@
             <div class="header">
               <div class="title">Acesso Rápido</div>
             </div>
-            <% if user_signed_in? %>
             <%= link_to "Buscar Cursos", courses_path, class:"br-item" %>
+            <% if user_signed_in? %>
             <%= link_to "Meus Favoritos", bookmarks_path, class:"br-item" %>
             <% end %>
           </div>
