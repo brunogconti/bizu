@@ -1,60 +1,32 @@
-<div class="row">
-  <% names = []
-    courses.each {|curso| names <<curso.name}
-    shift = ["Integral", "Matutino", "Vespertino","Noturno"]
-    %>
+<div class="justify-content-center my-2">
+  <%
+  names = []
+  shift = []
+  degree = []
+  Course.all.each do |curso|
+    unless names.include?(curso.name)
+      names << curso.name
+    end
+    unless shift.include?(curso.shift)
+      shift << curso.shift
+    end
+    unless degree.include?(curso.degree)
+      degree << curso.degree
+    end
+  end
+  %>
 
-  <%= simple_form_for :search, url: courses_path, method: "GET" do |f| %>
+  <%= simple_form_for :search,
+                      url: courses_path,
+                      class: "col-12 justify-content-center my-2",
+                      method: "GET" do |f| %>
     <%= f.input :name, label: "Nome do Curso",  collection: names, as: :select %>
     <%= f.input :shift, label: "Turno", collection: shift, as: :select %>
+    <%= f.input :degree, label: "Grau", collection: degree, as: :select %>
     <%= f.input :restaurant, label: "Restaurante Universitário", as: :boolean %>
     <%= f.input :accomodation, label: "Alojamento", as: :boolean %>
     <%= f.input :idh, label: "Qualidade de Vida", as: :radio_buttons, collection: [['alto', 'Alto'], ['medio', 'Médio']], label_method: :second, value_method: :first %>
     <%= f.submit "Search", class: "btn btn-primary" %>
     <%= link_to "Reset", courses_path  %>
   <% end %>
-
-
-    <!-- card1 -->
-
-      <div class="col-sm d-flex">
-        <% @courses.each do |course| %>
-        <div class="br-card">
-          <div class="card-header">
-            <div class="d-flex">
-              </span></span>
-              <div class="ml-3">
-                <p class="h5 text-primary-default mb-0">
-                  <%= course.name %> - <%= course.institution.name %>
-                </p>
-                <span>Campus <%= course.unit.name %> - <%=course.shift%></span>
-              </div> <!-- fim ml3 -->
-              <div class="ml-auto"></div>
-            </div> <!-- fim d-flex -->
-          </div> <!-- card-headers -->
-
-          <div class="card-content">
-            <p>O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
-                    course.institution.name %> no turno <%=course.shift%>
-            </p>
-          </div> <!-- fim do card content-->
-
-          <div class="card-footer">
-            <div class="d-flex">
-              <div>
-                <button class="br-button" type="button">Mais Informações
-                </button>
-              </div>
-              <div class="ml-auto">
-                <button class="br-button circle" type="button" aria-label="Ícone ilustrativo"><i class="fas fa-heart"
-                    aria-hidden="true"></i>
-                </button>
-              </div> <!-- fim do ml-auto -->
-            </div> <!-- fim d-flex 2 -->
-          </div> <!-- fim do card footer-->
-
-        </div> <!-- fim do br card -->
-        <% end %>
-      </div> <!-- fim do tamanho da coluna - col-sm-6 col-md-4 col-lg-3 -->
-  </div> <!-- fim do class - row -->
-  </div><!--  fim do outro div em cima -->
+</div>
