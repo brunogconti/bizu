@@ -16,16 +16,20 @@
               <div class="d-flex">
                 </span></span>
                 <div class="ml-3">
-                  <p class="h5 text-primary-default mb-0"><%=course.name %></p><span><%= course.unit.name %></span>
+                  <p class="h5 text-primary-default mb-0">
+                    <%= course.name %> - <%= course.institution.name %>
+                  </p>
+                  <span>Campus <%= course.unit.name %> - <%=course.shift%></span>
                 </div>
                 <div class="ml-auto">
                 </div>
               </div>
             </div>
             <div class="card-content">
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at, numquam
-                non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.</p>
-            </div>
+            <p>O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
+                    course.institution.name %> no turno <%=course.shift%>
+            </p>
+            </div> <!-- fim do card content-->
             <div class="card-footer">
               <div class="d-flex">
                 <div>
@@ -44,3 +48,49 @@
     </div>
   </div>
 </div>
+
+<!-- Tags de Filtro -->
+<!-- <div class="br-tag interaction-select small">
+  <input id="tag" type="checkbox" aria-label="selecionar tag" tabindex="0" />
+  <label for="tag"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
+  </label>
+</div>
+<div class="br-tag interaction-select selected small">
+  <input id="tag01" type="checkbox" aria-label="selecionar tag" checked="checked" tabindex="0" />
+  <label for="tag01"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
+  </label>
+</div>
+<div class="br-tag interaction-select small">
+  <input id="tag" type="checkbox" aria-label="selecionar tag" tabindex="0" />
+  <label for="tag"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
+  </label>
+</div>
+<div class="br-tag interaction-select selected small">
+  <input id="tag01" type="checkbox" aria-label="selecionar tag" checked="checked" tabindex="0" />
+  <label for="tag01"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
+  </label>
+</div>
+<br><br><br> -->
+<!--
+<!-- Cards no _search -->
+
+<!-- Menu de Paginação -->
+
+<!-- <nav class="br-pagination" aria-label="Paginação de resultados" data-total="4" data-current="1">
+  <ul>
+    <li>
+      <button class="br-button circle" type="button" data-previous-page="data-previous-page"
+        aria-label="Página anterior"><i class="fas fa-angle-left" aria-hidden="true"></i>
+      </button>
+    </li>
+    <li><a class="page active" href="javascript:void(0)">1</a></li>
+    <li><a class="page" href="javascript:void(0)">2</a></li>
+    <li><a class="page" href="javascript:void(0)">3</a></li>
+    <li><a class="page" href="javascript:void(0)">4</a></li>
+    <li>
+      <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte"><i
+          class="fas fa-angle-right" aria-hidden="true"></i>
+      </button>
+    </li>
+  </ul>
+</nav> -->
