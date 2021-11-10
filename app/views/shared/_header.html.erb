@@ -1,10 +1,10 @@
   <div class="container-lg">
     <div class="header-top">
-      <div class="header-logo">
+      <%= link_to root_path, class: "header-logo" do %>
         <img src="https://i.ibb.co/LJdnDNM/Bizu-logo-removebg-preview.png" alt="logo" style="max-height: 40px;"/>
         <span style="display: block" class="br-divider vertical mx-half mx-sm-1"></span>
-        <div style="display: block;" class="header-sign"><strong>O melhor curso para você!</strong></div>
-      </div>
+        <div style="display: block; text-decoration: none;" class="header-sign"><strong>O melhor curso para você!</strong></div>
+      <% end %>
       <div class="header-actions">
       <div>
       </div>
@@ -18,7 +18,7 @@
             </div>
             <%= link_to "Buscar Cursos", courses_path, class:"br-item" %>
             <% if user_signed_in? %>
-            <%= link_to "Meus Favoritos", courses_path, class:"br-item" %>
+            <%= link_to "Meus Favoritos", bookmarks_path, class:"br-item" %>
             <% end %>
           </div>
         </div>
@@ -61,7 +61,7 @@
           </div>
         <% else %>
           <div class="header-avatar">
-            <div class="avatar dropdown"><span class="br-avatar" title="Fulana da Silva"><span class="image"><img src="https://picsum.photos/id/823/400" alt="Avatar"/></span></span>
+            <div class="avatar dropdown"><span class="br-avatar" title="Fulana da Silva"><span class="image"><img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="Avatar"/></span></span>
               <button class="br-button circle small" type="button" aria-label="Abrir Menu de usuário" data-toggle="dropdown"><i class="fas fa-angle-down" aria-hidden="true"></i>
               </button>
               <div class="br-notification"style="width: auto;">
