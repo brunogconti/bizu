@@ -14,9 +14,47 @@
     <%= link_to "Reset", courses_path  %>
   <% end %>
 
-  <ul>
-    <% @courses.each do |course|  %>
-    <li><%= course.name %> - <%= course.unit.name %> - <%= course.citie.name %> - <%= course.institution.name %></li>
-    <% end %>
-  </ul>
-</div>
+
+    <!-- card1 -->
+
+      <div class="col-sm d-flex">
+        <% @courses.each do |course| %>
+        <div class="br-card">
+          <div class="card-header">
+            <div class="d-flex">
+              </span></span>
+              <div class="ml-3">
+                <p class="h5 text-primary-default mb-0">
+                  <%= course.name %> - <%= course.institution.name %>
+                </p>
+                <span>Campus <%= course.unit.name %> - <%=course.shift%></span>
+              </div> <!-- fim ml3 -->
+              <div class="ml-auto"></div>
+            </div> <!-- fim d-flex -->
+          </div> <!-- card-headers -->
+
+          <div class="card-content">
+            <p>O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
+                    course.institution.name %> no turno <%=course.shift%>
+            </p>
+          </div> <!-- fim do card content-->
+
+          <div class="card-footer">
+            <div class="d-flex">
+              <div>
+                <button class="br-button" type="button">Mais Informações
+                </button>
+              </div>
+              <div class="ml-auto">
+                <button class="br-button circle" type="button" aria-label="Ícone ilustrativo"><i class="fas fa-heart"
+                    aria-hidden="true"></i>
+                </button>
+              </div> <!-- fim do ml-auto -->
+            </div> <!-- fim d-flex 2 -->
+          </div> <!-- fim do card footer-->
+
+        </div> <!-- fim do br card -->
+        <% end %>
+      </div> <!-- fim do tamanho da coluna - col-sm-6 col-md-4 col-lg-3 -->
+  </div> <!-- fim do class - row -->
+  </div><!--  fim do outro div em cima -->
