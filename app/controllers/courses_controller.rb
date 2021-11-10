@@ -4,18 +4,24 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.includes(:unit).includes(:citie, :institution)
     if params[:search]
-      @courses = @courses.where('courses.name ilike ?', "%#{params[:search][:name]}%") if params[:search][:name].present?
-      @courses = @courses.where('courses.shift ilike ?', "%#{params[:search][:shift]}%") if params[:search][:shift].present?
-      if params[:search][:restaurant].present?
-        @has_restaurant = params[:search][:restaurant] == 1
-        @courses = @courses.joins(:unit).where('units.restaurant = ?', "#{@has_restaurant}")
+      if params[:search][:name].present?
+        @courses = @courses.where('courses.name ilike ?', "%#{params[:search][:name]}%")
       end
-      if params[:search][:accomodation].present?
-        @has_accomodation = params[:search][:accomodation] == 1
-        @courses = @courses.joins(:unit).where('units.accomodation = ?', "#{@has_accomodation}")
+      if params[:search][:shift].present?
+        @courses = @courses.where('courses.shift ilike ?', "%#{params[:search][:shift]}%")
+      end
+      if params[:search][:degree].present?
+        @courses = @courses.where('courses.degree ilike ?', "%#{params[:search][:degree]}%")
+      end
+      if params[:search][:restaurant] == "1"
+        @courses = @courses.joins(:unit).where('units.restaurant = ?', "true")
+      end
+      if params[:search][:accomodation] == "1"
+        @courses = @courses.joins(:unit).where('units.accomodation = ?', "true")
       end
       if params[:search][:idh].present?
-        @query = params[:search][:idh] == "alto" ? ["idh > ? OR idh < ?", 0.8, 0.899] : ["idh > ? OR idh < ?", 0.5, 0.799]
+        @query = ["cities.idh > ? AND cities.idh < ?", 0.8, 0.899] if params[:search][:idh] == "alto"
+        @query = ["cities.idh > ? AND cities.idh < ?", 0.5, 0.799] if params[:search][:idh] == "medio"
         @courses = @courses.joins(:unit).joins(:citie).where(@query)
       end
     end

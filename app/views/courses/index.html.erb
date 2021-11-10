@@ -1,153 +1,46 @@
-<h2>Cursos ... </h2>
-<p>Lista de cursos pelo critério escolhido</p>
-<br><br><br>
-<!-- <ul>
-  <% @courses.each do |course|  %>
-  <%  @coursename = course.name  %>
-  <% @coursecity = course.citie.name %>
-    <% @courseinst = course.institution.name %>
-  <li><%= course.name %> - <%= course.unit.name %> - <%= course.citie.name %> - <%= course.institution.name %></li>
-  <% end %>
-</ul> -->
-<%= render 'search' , courses: @courses %>
-<!-- Tags de Filtro -->
-<div class="br-tag interaction-select small">
-  <input id="tag" type="checkbox" aria-label="selecionar tag" tabindex="0" />
-  <label for="tag"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
-  </label>
-</div>
-<div class="br-tag interaction-select selected small">
-  <input id="tag01" type="checkbox" aria-label="selecionar tag" checked="checked" tabindex="0" />
-  <label for="tag01"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
-  </label>
-</div>
-<div class="br-tag interaction-select small">
-  <input id="tag" type="checkbox" aria-label="selecionar tag" tabindex="0" />
-  <label for="tag"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
-  </label>
-</div>
-<div class="br-tag interaction-select selected small">
-  <input id="tag01" type="checkbox" aria-label="selecionar tag" checked="checked" tabindex="0" />
-  <label for="tag01"><i class="far fa-hand-point-right" aria-hidden="true"></i><span>Label</span>
-  </label>
-</div>
-<br><br><br>
-
-<!-- Cards -->
 <div class="row">
-<div class="col-sm-7 col-md-5 col-lg-4">
-  <div class="br-card">
-    <div class="card-header">
-      <div class="d-flex"></span></span>
-        <div class="ml-3">
-          <p class="h5 text-primary-default mb-0">Curso - Universidade</p><span>UX Designer</span>
-        </div>
-        <div class="ml-auto">
-        </div>
-      </div>
+  <div class="col-3">
+    <%= render 'search' , courses: @courses %>
+  </div>
+  <div class="col-9">
+    <div class="row d-block">
+      <h2>Cursos ... </h2>
+      <p>Lista de cursos pelo critério escolhido</p>
     </div>
-    <div class="card-content">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at, numquam
-        non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.</p>
-    </div>
-    <div class="card-footer">
-      <div class="d-flex">
-        <div>
-          <button class="br-button" type="button">Mais Informações
-          </button>
+    <br>
+    <div class="row">
+      <% @courses.each do |course|  %>
+        <div class="col-sm-7 col-md-5 col-lg-4">
+          <div class="br-card">
+            <div class="card-header">
+              <div class="d-flex">
+                </span></span>
+                <div class="ml-3">
+                  <p class="h5 text-primary-default mb-0"><%=course.name %></p><span><%= course.unit.name %></span>
+                </div>
+                <div class="ml-auto">
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at, numquam
+                non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.</p>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex">
+                <div>
+                 <button class="br-button" type="button">Mais Informações</button>
+                </div>
+                <div class="ml-auto">
+                  <button class="br-button circle" type="button" aria-label="Ícone ilustrativo">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="ml-auto">
-          <button class="br-button circle" type="button" aria-label="Ícone ilustrativo"><i class="fas fa-heart"
-              aria-hidden="true"></i>
-          </button>
-          </button>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
-<br>
-<div class="col-sm-7 col-md-5 col-lg-4">
-  <div class="br-card">
-    <div class="card-header">
-      <div class="d-flex"></span></span>
-        <div class="ml-3">
-          <p class="h5 text-primary-default mb-0">Curso - Universidade</p><span>UX Designer</span>
-        </div>
-        <div class="ml-auto">
-        </div>
-      </div>
-    </div>
-    <div class="card-content">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at, numquam
-        non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.</p>
-    </div>
-    <div class="card-footer">
-      <div class="d-flex">
-        <div>
-          <button class="br-button" type="button">Mais Informações
-          </button>
-        </div>
-        <div class="ml-auto">
-          <button class="br-button circle" type="button" aria-label="Ícone ilustrativo"><i class="fas fa-heart"
-              aria-hidden="true"></i>
-          </button>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<div class="col-sm-7 col-md-5 col-lg-4">
-  <div class="br-card">
-    <div class="card-header">
-      <div class="d-flex"></span></span>
-        <div class="ml-3">
-          <p class="h5 text-primary-default mb-0">Curso - Universidade</p><span>UX Designer</span>
-        </div>
-        <div class="ml-auto">
-        </div>
-      </div>
-    </div>
-    <div class="card-content">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at, numquam
-        non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.</p>
-    </div>
-    <div class="card-footer">
-      <div class="d-flex">
-        <div>
-          <button class="br-button" type="button">Mais Informações
-          </button>
-        </div>
-        <div class="ml-auto">
-          <button class="br-button circle" type="button" aria-label="Ícone ilustrativo"><i class="fas fa-heart"
-              aria-hidden="true"></i>
-          </button>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<br>
-<!-- Menu de Paginação -->
-<nav class="br-pagination" aria-label="Paginação de resultados" data-total="4" data-current="1">
-  <ul>
-    <li>
-      <button class="br-button circle" type="button" data-previous-page="data-previous-page"
-        aria-label="Página anterior"><i class="fas fa-angle-left" aria-hidden="true"></i>
-      </button>
-    </li>
-    <li><a class="page active" href="javascript:void(0)">1</a></li>
-    <li><a class="page" href="javascript:void(0)">2</a></li>
-    <li><a class="page" href="javascript:void(0)">3</a></li>
-    <li><a class="page" href="javascript:void(0)">4</a></li>
-    <li>
-      <button class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte"><i
-          class="fas fa-angle-right" aria-hidden="true"></i>
-      </button>
-    </li>
-  </ul>
-</nav>

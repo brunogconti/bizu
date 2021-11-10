@@ -1,22 +1,32 @@
-<div class="row">
-  <% names = []
-    courses.each {|curso| names <<curso.name}
-    shift = ["Integral", "Matutino", "Vespertino","Noturno"]
-    %>
+<div class="justify-content-center my-2">
+  <%
+  names = []
+  shift = []
+  degree = []
+  Course.all.each do |curso|
+    unless names.include?(curso.name)
+      names << curso.name
+    end
+    unless shift.include?(curso.shift)
+      shift << curso.shift
+    end
+    unless degree.include?(curso.degree)
+      degree << curso.degree
+    end
+  end
+  %>
 
-  <%= simple_form_for :search, url: courses_path, method: "GET" do |f| %>
+  <%= simple_form_for :search,
+                      url: courses_path,
+                      class: "col-12 justify-content-center my-2",
+                      method: "GET" do |f| %>
     <%= f.input :name, label: "Nome do Curso",  collection: names, as: :select %>
     <%= f.input :shift, label: "Turno", collection: shift, as: :select %>
+    <%= f.input :degree, label: "Grau", collection: degree, as: :select %>
     <%= f.input :restaurant, label: "Restaurante Universitário", as: :boolean %>
     <%= f.input :accomodation, label: "Alojamento", as: :boolean %>
     <%= f.input :idh, label: "Qualidade de Vida", as: :radio_buttons, collection: [['alto', 'Alto'], ['medio', 'Médio']], label_method: :second, value_method: :first %>
     <%= f.submit "Search", class: "btn btn-primary" %>
     <%= link_to "Reset", courses_path  %>
   <% end %>
-
-  <ul>
-    <% @courses.each do |course|  %>
-    <li><%= course.name %> - <%= course.unit.name %> - <%= course.citie.name %> - <%= course.institution.name %></li>
-    <% end %>
-  </ul>
 </div>
