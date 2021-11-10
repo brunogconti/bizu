@@ -35,5 +35,4 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   loadDynamicBannerText();
   BRTab();
-  abasList();
 });
