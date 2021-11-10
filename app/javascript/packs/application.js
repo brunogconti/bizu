@@ -28,20 +28,12 @@ import "@govbr/dsgov/dist/dsgov"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { loadDynamicBannerText } from '../components/banner';
+import { BRTab } from '../components/brtab';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
-
-});
-
-
-import { loadDynamicBannerText } from '../components/banner';
-import {tabActive} from '../components/tab';
-
-
-document.addEventListener('turbolinks:load', () => {
-  // Call your JS functions here
   loadDynamicBannerText();
-  tabActive();
+  BRTab();
+  abasList();
 });
