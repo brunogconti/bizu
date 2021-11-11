@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3 pr-5 d-flex flex-column">
       <%= render 'search' , courses: @courses %>
     </div>
     <div class="col-9">
@@ -12,7 +12,7 @@
       <div class="row">
         <% @courses.each do |course|  %>
           <div class="col-sm-7 col-md-5 col-lg-4">
-            <div class="br-card[data-expanded=on] mb-2 border">
+            <div class="br-card[data-expanded=on] mb-5 border">
               <div class="card-header">
                 <div class="d-flex">
                   </span></span>
@@ -27,14 +27,14 @@
                 </div>
               </div>
               <div class="card-content">
-              <p>O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
+              <p class="p-2">O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
                       course.institution.name %> no turno <%=course.shift%>
               </p>
               </div> <!-- fim do card content-->
               <div class="card-footer">
                 <div class="d-flex">
                   <div>
-                  <%= link_to "Mais Informações", course_path(course), class: "btn btn-primary" %>
+                  <%= link_to "Mais Informações", course_path(course), class: "btn btn-primary text-decoration-none" %>
                   </div>
                   <div class="ml-auto">
                     <button class="br-button circle" type="button" aria-label="Ícone ilustrativo">
