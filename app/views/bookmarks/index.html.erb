@@ -2,9 +2,9 @@
   <h1>Cursos favoritados</h1>
   <h2>Lista dos cursos escolhidos pelo usuário</h2>
 
-  <div class="bookmark-container" data-testid="college-list-results">
+  <div class="container-bookmark" data-testid="college-list-results">
     <% @bookmarks.each do |bookmark|  %>
-      <div class="bookmark-card">
+      <div class="bookmark">
         <img src="https://source.unsplash.com/NlFyPKxXORo" >
         <div class="bookmark-content">
             <p><strong>Curso: </strong><%= bookmark.course.name %></p>
