@@ -1,23 +1,25 @@
-<h1>Cursos favoritados</h1>
-<h2>Lista dos cursos escolhidos pelo usuário</h2>
+<div class="container">
+  <h1>Cursos favoritados</h1>
+  <h2>Lista dos cursos escolhidos pelo usuário</h2>
 
-<div class="bookmark-container" data-testid="college-list-results">
-  <% @bookmarks.each do |bookmark|  %>
-    <div class="bookmark-card">
-      <img src="https://source.unsplash.com/NlFyPKxXORo" >
-      <div class="bookmark-content">
-          <p><strong>Curso: </strong><%= bookmark.course.name %></p>
-          <p><strong>Campus: </strong><%= bookmark.course.unit.name %></p>
-          <p><strong>Cidade: </strong><%= bookmark.course.citie.name %></p>
-          <p><strong>Faculdade: </strong><%= bookmark.course.institution.name %></p>
-       </div>
-     <div class="card-close">
-        <%= link_to bookmark_path(bookmark), method:"delete" do%>
-          <i class="far fa-times-circle"></i>
-        <%end%>
-     </div>
-    </div>
-  <% end %>
+  <div class="bookmark-container" data-testid="college-list-results">
+    <% @bookmarks.each do |bookmark|  %>
+      <div class="bookmark-card">
+        <img src="https://source.unsplash.com/NlFyPKxXORo" >
+        <div class="bookmark-content">
+            <p><strong>Curso: </strong><%= bookmark.course.name %></p>
+            <p><strong>Campus: </strong><%= bookmark.course.unit.name %></p>
+            <p><strong>Cidade: </strong><%= bookmark.course.citie.name %></p>
+            <p><strong>Faculdade: </strong><%= bookmark.course.institution.name %></p>
+        </div>
+      <div class="card-close">
+          <%= link_to bookmark_path(bookmark), method:"delete" do%>
+            <i class="far fa-times-circle"></i>
+          <%end%>
+      </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <%= javascript_pack_tag 'import_gov' %>
