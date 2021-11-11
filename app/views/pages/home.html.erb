@@ -8,26 +8,4 @@
   </div>
 </div>
 
-<% courses = Course.all %>
-  <% courses.each do |course| %>
-    <ul id="thisThing">
-      <% p "#{course.name}" %>
-    </ul>
-    <% system("clear") %>
-  <% end %>
-
-<% cityes = Citie.all %>
-  <% cityes.each do |city| %>
-    <ul>
-    <%city.name %>
-    </ul>
-  <% end %>
-
-<% its = Institution.all %>
-  <% its.each do |it| %>
-    <ul>
-    <%it.name %>
-    </ul>
-  <% end %>
-  
 <%= javascript_pack_tag 'import_gov' %>
