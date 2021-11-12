@@ -134,7 +134,8 @@ end
 
 puts "Courses update"
 
-#-------------------------------
+# -----------------------------------
+
 
 puts "Start updating cities"
 
