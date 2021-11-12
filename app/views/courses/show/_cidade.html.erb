@@ -5,35 +5,37 @@
 
 <span class="br-divider my-3"></span>
 
-<h5>Clima</h5>
+<h5>Mais sobre a cidade</h5>
+<p><%= course.citie.abstract %></p>
+
+<span class="br-divider my-3"></span>
+
+<h5 class="mb-0">Clima</h5>
 
 <table>
   <tr>
     <td>
       <div>
-        <h6>Temperatura Max (Média):</h6>
-        <p><%= course.citie.max_temp_avg %></p>
+        <h6 class="text-center">Temperatura Max (Média):</h6>
+        <p class="text-center"><%= course.citie.max_temp_avg %></p>
       </div>
     </td>
     <td>
       <div>
-        <h6>Temperatura Min (Média):</h6>
-        <p><%= course.citie.min_temp_avg %></p>
+        <h6 class="text-center">Temperatura Min (Média):</h6>
+        <p class="text-center"><%= course.citie.min_temp_avg %></p>
       </div>
     </td>
     <td>
       <div></div>
-        <h6>Dias de Chuva (Ano):</h6>
-        <p><%= course.citie.rain_days %></p>
+        <h6 class="text-center">Dias de Chuva (Ano):</h6>
+        <p class="text-center"><%= course.citie.rain_days %></p>
       </div>
     </td>
     <td>
       <div>
-        <h6>Horas de Luz (Ano):</h6>
-        <p><%= course.citie.daylight_hours %></p></td>
+        <h6 class="text-center">Horas de Luz (Ano):</h6>
+        <p class="text-center"><%= course.citie.daylight_hours %></p></td>
       </div>
   </tr>
 </table>
-
-<h5>Mais sobre a cidade</h5>
-<p><%= course.citie.abstract %></p>
