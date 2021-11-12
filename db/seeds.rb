@@ -134,50 +134,7 @@ end
 
 puts "Courses update"
 
-# -----------------------------------
-
-puts "Start creating segments"
-
-Course.all.each do |course|
-  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
-  response = Net::HTTP.get(uri)
-  hash_array = JSON.parse(response)
-
- hash_array[0]["notasDeCorte"].each do |hash|
-    puts "Creating #{hash['ano']}"
-    unless Segment.find_by(course: course, sisu_edition: hash['ano']).present?
-      Segment.create!(
-        course: course,
-        sisu_edition: hash['ano']
-      )
-    end
-  end
-end
-
-puts "Segments create"
-
-# -----------------------------------
-
-puts "Start creating Passing Scores"
-
-Course.all.each do |course|
-  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
-  response = Net::HTTP.get(uri)
-  hash_array = JSON.parse(response)
-
-  hash_array[0]["notasDeCorte"].each do |hash|
-    puts "Creating #{hash['descricao']}"
-    PassingScore.create!(
-      segment: Segment.find_by(course: course, sisu_edition: hash['ano']),
-      name: hash['descricao'],
-      passing_score: hash['nota']
-    )
-  end
-end
-
-puts "Passing Scores created"
-
-# -----------------------------------
+#-------------------------------
 
 puts "Start updating cities"
 
@@ -382,5 +339,48 @@ Institution.all.order('id asc').each do |ies|
 end
 
 puts "Institutions updated"
+
+# -----------------------------------
+
+puts "Start creating segments"
+
+Course.all.each do |course|
+  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
+
+ hash_array[0]["notasDeCorte"].each do |hash|
+    puts "Creating #{hash['ano']}"
+    unless Segment.find_by(course: course, sisu_edition: hash['ano']).present?
+      Segment.create!(
+        course: course,
+        sisu_edition: hash['ano']
+      )
+    end
+  end
+end
+
+puts "Segments create"
+
+# -----------------------------------
+
+puts "Start creating Passing Scores"
+
+Course.all.each do |course|
+  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+  response = Net::HTTP.get(uri)
+  hash_array = JSON.parse(response)
+
+  hash_array[0]["notasDeCorte"].each do |hash|
+    puts "Creating #{hash['descricao']}"
+    PassingScore.create!(
+      segment: Segment.find_by(course: course, sisu_edition: hash['ano']),
+      name: hash['descricao'],
+      passing_score: hash['nota']
+    )
+  end
+end
+
+puts "Passing Scores created"
 
 # -----------------------------------
