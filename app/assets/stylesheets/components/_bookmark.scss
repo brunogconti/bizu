@@ -1,0 +1,44 @@
+.bookmark {
+  overflow: hidden;
+  height: 120px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.bookmark img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.bookmark h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.bookmark p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.bookmark .bookmark-infos {
+  padding: 16px;
+}
+
+.bookmark-content {
+  padding: 16px;
+  color: black;
+}
+
+.card-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

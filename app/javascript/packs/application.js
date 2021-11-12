@@ -25,7 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import "@govbr/dsgov/dist/dsgov"
-
+import ApexCharts from "apexcharts";
+window.ApexCharts = ApexCharts;
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';

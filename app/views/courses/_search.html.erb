@@ -23,10 +23,10 @@
     <%= f.input :name, label: "Nome do Curso",  collection: names, as: :select %>
     <%= f.input :shift, label: "Turno", collection: shift, as: :select %>
     <%= f.input :degree, label: "Grau", collection: degree, as: :select %>
-    <%= f.input :restaurant, label: "Restaurante Universitário", as: :boolean %>
-    <%= f.input :accomodation, label: "Alojamento", as: :boolean %>
-    <%= f.input :idh, label: "Qualidade de Vida", as: :radio_buttons, collection: [['alto', 'Alto'], ['medio', 'Médio']], label_method: :second, value_method: :first %>
-    <%= f.submit "Search", class: "btn btn-primary" %>
+    <%= f.input_field :restaurant, as: :boolean %> <strong>Restaurante Universitário</strong><hr>
+    <%= f.input_field :accomodation, as: :boolean %> <strong>Alojamento</strong><hr>
+    <p><strong>Qualidade de Vida</strong></p><%= f.input_field :idh, as: :radio_buttons, collection: [['alto', 'Alto'], ['medio', 'Médio']], label_method: :second, value_method: :first %><hr>
+    <%= f.submit "Search", class: "btn btn-primary w-100" %><hr>
     <%= link_to "Reset", courses_path  %>
   <% end %>
 </div>
