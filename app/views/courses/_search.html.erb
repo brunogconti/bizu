@@ -2,6 +2,7 @@
   <%
   names = []
   inst_names = []
+  cities_names = []
   shift = ["Integral", "Matutino", "Vespertino", "Noturno"]
   degree = ["ABI", "Bacharelado", "Licenciatura", "Tecnológico"]
   Course.all.each do |course|
@@ -11,9 +12,13 @@
     unless inst_names.include?(course.institution.initials)
       inst_names << course.institution.initials
     end
+    unless cities_names.include?(course.citie.name)
+      cities_names << course.citie.name
+    end
   end
   names.sort!
   inst_names.sort!
+  cities_names.sort!
   %>
 
   <h2>Buscar cursos</h2>
@@ -24,6 +29,7 @@
                       method: "GET" do |f| %>
     <%= f.input :name, label: "Nome do Curso",  collection: names,  as: :select, input_html: { class: 'select2' } %>
     <%= f.input :inst_name, label: "Instituição",  collection: inst_names,  as: :select, input_html: { class: 'select2' } %>
+    <%= f.input :citie, label: "Cidade",  collection: cities_names,  as: :select, input_html: { class: 'select2' } %>
     <%= f.input :shift, label: "Turno", collection: shift, as: :select %>
     <%= f.input :degree, label: "Grau", collection: degree, as: :select %>
     <%= f.input_field :restaurant, as: :boolean %> <strong>Restaurante Universitário</strong><hr>

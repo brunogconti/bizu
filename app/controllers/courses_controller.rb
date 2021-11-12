@@ -10,6 +10,9 @@ class CoursesController < ApplicationController
       if params[:search][:inst_name].present?
         @courses = @courses.joins(:unit).joins(:institution).where('institutions.initials ilike ?', "%#{params[:search][:inst_name]}%")
       end
+      if params[:search][:citie].present?
+        @courses = @courses.joins(:unit).joins(:citie).where('cities.name ilike ?', "%#{params[:search][:citie]}%")
+      end
       if params[:search][:shift].present?
         @courses = @courses.where('courses.shift ilike ?', "%#{params[:search][:shift]}%")
       end
