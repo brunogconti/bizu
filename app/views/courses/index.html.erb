@@ -13,21 +13,21 @@
         <% @courses.each do |course|  %>
           <div class="col-sm-7 col-md-5 col-lg-4">
             <div class="br-card[data-expanded=on] mb-5 border">
-              <div class="card-header">
+              <div class="card-header" style="padding-left: 12px; padding-right: 12px;" >
                 <div class="d-flex">
                   </span></span>
                   <div>
-                    <p class="h5 text-primary-default mb-0">
-                      <%= course.name %> - <%= course.institution.initials %>
-                    </p>
-                    <span>Campus <%= course.unit.name %> - <%=course.shift%></span>
+                    <p class="h6 text-primary-default mb-0"><%= course.name %> - <%= course.institution.initials %></p>
+                    <p class="mb-0"><%= course.unit.name %></p>
+                    <p class="mb-0"><%= course.citie.name %> - <%= course.citie.state %></p>
+                    <p class="mb-0"><%= course.degree %> | <%= course.shift %></p>
                   </div>
                   <div class="ml-auto">
                   </div>
                 </div>
               </div>
               <div class="card-content">
-              <p class="p-2">O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
+              <p class="p-2 mb-0">O curso de <%= course.name %>, ministrado no campus de Campus <%=course.unit.name %> da <%=
                       course.institution.name %> no turno <%=course.shift%>
               </p>
               </div> <!-- fim do card content-->
