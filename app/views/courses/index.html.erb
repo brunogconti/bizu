@@ -5,8 +5,8 @@
     </div>
     <div class="col-9">
       <div class="row d-block">
-        <h2>Cursos ... </h2>
-        <p>Lista de cursos pelo critério escolhido</p>
+        <br><br>
+        <p>Lista de cursos pelo critério escolhido:</p>
       </div>
       <br>
       <div class="row">
@@ -16,9 +16,9 @@
               <div class="card-header">
                 <div class="d-flex">
                   </span></span>
-                  <div class="ml-3">
+                  <div>
                     <p class="h5 text-primary-default mb-0">
-                      <%= course.name %> - <%= course.institution.name %>
+                      <%= course.name %> - <%= course.institution.initials %>
                     </p>
                     <span>Campus <%= course.unit.name %> - <%=course.shift%></span>
                   </div>
@@ -32,14 +32,9 @@
               </p>
               </div> <!-- fim do card content-->
               <div class="card-footer">
-                <div class="d-flex">
+                <div class="d-flex justify-content-center">
                   <div>
                   <%= link_to "Mais Informações", course_path(course), class: "btn btn-primary text-decoration-none" %>
-                  </div>
-                  <div class="ml-auto">
-                    <button class="br-button circle" type="button" aria-label="Ícone ilustrativo">
-                      <i class="fas fa-heart" aria-hidden="true"></i>
-                    </button>
                   </div>
                 </div>
               </div>

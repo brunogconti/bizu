@@ -66,9 +66,14 @@
 </table>
 
 <!--<h5>Últimos resultados do SiSU</h5>
-<p><i class="fa fa-play" aria-hidden="true"></i> Referência:  <%= course.segments.last.sisu_edition %></p>
 
 <p>tabela com as notas de corte aqui</p>
-SELECT *
-FROM course.segments
-GROUP BY sisu_edition-->
+
+<% course.segments.each do |segment| %>
+  <%= segment.sisu_edition %>
+<% end %>
+
+<% course.segments.last.passing_scores.each do |score| %>
+  <p><%= score.name %></p>
+  <p><%= score.passing_score %></p>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_015530) do
+ActiveRecord::Schema.define(version: 2021_11_12_014513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,15 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "passing_scores", force: :cascade do |t|
+    t.bigint "segment_id", null: false
+    t.string "name"
+    t.float "passing_score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["segment_id"], name: "index_passing_scores_on_segment_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
@@ -106,10 +115,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
 
   create_table "segments", force: :cascade do |t|
     t.bigint "course_id", null: false
-    t.string "name"
     t.string "sisu_edition"
-    t.float "score"
-    t.integer "vacancies"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_segments_on_course_id"
@@ -165,6 +171,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_015530) do
   add_foreign_key "bookmarks", "courses"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "courses", "units"
+  add_foreign_key "passing_scores", "segments"
   add_foreign_key "reviews", "courses"
   add_foreign_key "reviews", "users"
   add_foreign_key "segments", "courses"

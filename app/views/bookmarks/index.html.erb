@@ -1,25 +1,28 @@
 <div class="container">
-  <h1>Cursos favoritados</h1>
-  <h2>Lista dos cursos escolhidos pelo usuário</h2>
-
-  <div class="d-flex flex-column w-50" data-testid="college-list-results">
-    <% @bookmarks.each do |bookmark|  %>
-      <div class="bookmark my-4">
-        <img src="https://source.unsplash.com/NlFyPKxXORo" >
-        <div class="bookmark-content align-itens-left">
-            <p><strong>Curso: </strong><%= bookmark.course.name %></p>
-            <p><strong>Campus: </strong><%= bookmark.course.unit.name %></p>
-            <p><strong>Cidade: </strong><%= bookmark.course.citie.name %></p>
-            <p><strong>Faculdade: </strong><%= bookmark.course.institution.name %></p>
+  <h2>Meus cursos favoritos:</h2>
+  <% unless current_user.bookmarks.empty? %>
+    <div class="d-flex flex-column w-50" data-testid="college-list-results">
+      <% @bookmarks.each do |bookmark|  %>
+        <div class="bookmark my-3">
+          <img src="https://source.unsplash.com/NlFyPKxXORo" >
+          <div class="bookmark-content align-itens-left">
+              <p><strong>Curso: </strong><%= bookmark.course.name %></p>
+              <p><strong>Campus: </strong><%= bookmark.course.unit.name %></p>
+              <p><strong>Cidade: </strong><%= bookmark.course.citie.name %></p>
+              <p><strong>Faculdade: </strong><%= bookmark.course.institution.name %></p>
+          </div>
+        <div class="card-close">
+            <%= link_to bookmark_path(bookmark), method:"delete", remote: true do%>
+              <i class="far fa-times-circle"></i>
+            <%end%>
         </div>
-      <div class="card-close">
-          <%= link_to bookmark_path(bookmark), method:"delete" do%>
-            <i class="far fa-times-circle"></i>
-          <%end%>
-      </div>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>🤔 Você parece não ter nenhum curso favoritos ainda...</p>
+  <% end %>
+  <br><br>
 </div>
 
 <%= javascript_pack_tag 'import_gov' %>

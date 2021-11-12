@@ -7,6 +7,9 @@ class CoursesController < ApplicationController
       if params[:search][:name].present?
         @courses = @courses.where('courses.name ilike ?', "%#{params[:search][:name]}%")
       end
+      if params[:search][:inst_name].present?
+        @courses = @courses.joins(:unit).joins(:institution).where('institutions.initials ilike ?', "%#{params[:search][:inst_name]}%")
+      end
       if params[:search][:shift].present?
         @courses = @courses.where('courses.shift ilike ?', "%#{params[:search][:shift]}%")
       end
@@ -33,5 +36,13 @@ class CoursesController < ApplicationController
     @favorite = Bookmark.find_by(course: @course, user: current_user)
     @bookmark = Bookmark.new
     @review = Review.new
+    unit = @course.unit
+
+    @markers = [{
+      lat: unit.latitude,
+      lng: unit.longitude,
+      info_window: render_to_string(partial: "../views/shared/info_window", locals: { course: @course }),
+      image_url: helpers.asset_url('https://i.ibb.co/HxnKsvy/Bizu-removebg-preview.png')
+      }]
   end
 end
