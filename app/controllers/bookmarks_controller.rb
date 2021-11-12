@@ -17,11 +17,16 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    # @course = Course.find(params[:course_id])
-    # @bookmark = Bookmark.find_by(course: @course, user: current_user)
-    @bookmark = Bookmark.find(params[:id])
-    @bookmark.destroy
-    redirect_to bookmarks_path, notice: 'Curso removido dos favoritos!'
+    if params[:course_id].present?
+      @course = Course.find(params[:course_id])
+      @bookmark = Bookmark.find_by(course: @course, user: current_user)
+      @bookmark.destroy
+      redirect_to course_path(@course), notice: 'Curso removido dos favoritos!'
+    else
+      @bookmark = Bookmark.find(params[:id])
+      @bookmark.destroy
+      redirect_to bookmarks_path, notice: 'Curso removido dos favoritos!'
+    end
   end
 
   private

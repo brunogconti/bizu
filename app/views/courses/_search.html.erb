@@ -1,32 +1,41 @@
 <div class="justify-content-center my-2">
   <%
   names = []
-  shift = []
-  degree = []
-  Course.all.each do |curso|
-    unless names.include?(curso.name)
-      names << curso.name
+  inst_names = []
+  cities_names = []
+  shift = ["Integral", "Matutino", "Vespertino", "Noturno"]
+  degree = ["ABI", "Bacharelado", "Licenciatura", "Tecnológico"]
+  Course.all.each do |course|
+    unless names.include?(course.name)
+      names << course.name
     end
-    unless shift.include?(curso.shift)
-      shift << curso.shift
+    unless inst_names.include?(course.institution.initials)
+      inst_names << course.institution.initials
     end
-    unless degree.include?(curso.degree)
-      degree << curso.degree
+    unless cities_names.include?(course.citie.name)
+      cities_names << course.citie.name
     end
   end
+  names.sort!
+  inst_names.sort!
+  cities_names.sort!
   %>
+
+  <h2>Buscar cursos</h2>
 
   <%= simple_form_for :search,
                       url: courses_path,
                       class: "col-12 justify-content-center my-2",
                       method: "GET" do |f| %>
-    <%= f.input :name, label: "Nome do Curso",  collection: names, as: :select %>
+    <%= f.input :name, label: "Nome do Curso",  collection: names,  as: :select, input_html: { class: 'select2' } %>
+    <%= f.input :inst_name, label: "Instituição",  collection: inst_names,  as: :select, input_html: { class: 'select2' } %>
+    <%= f.input :citie, label: "Cidade",  collection: cities_names,  as: :select, input_html: { class: 'select2' } %>
     <%= f.input :shift, label: "Turno", collection: shift, as: :select %>
     <%= f.input :degree, label: "Grau", collection: degree, as: :select %>
     <%= f.input_field :restaurant, as: :boolean %> <strong>Restaurante Universitário</strong><hr>
     <%= f.input_field :accomodation, as: :boolean %> <strong>Alojamento</strong><hr>
     <p><strong>Qualidade de Vida</strong></p><%= f.input_field :idh, as: :radio_buttons, collection: [['alto', 'Alto'], ['medio', 'Médio']], label_method: :second, value_method: :first %><hr>
-    <%= f.submit "Search", class: "btn btn-primary w-100" %><hr>
+    <%= f.submit "Search", class: "btn btn-primary w-100" %>
     <%= link_to "Reset", courses_path  %>
   <% end %>
 </div>
