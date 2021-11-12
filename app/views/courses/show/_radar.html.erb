@@ -1,0 +1,36 @@
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<% facilidades = [@course.unit.internet, @course.unit.restaurant, @course.unit.accomodation, @course.unit.transport, @course.unit.sports_playground] %>
+  <% countf = 0 %>
+  <% facilidades.each do |var| %>
+      <% countf += 1 if var%>
+  <% end %>
+  <% count = countf * 20  %>
+
+<% custof = @course.unit.xerox_cost.to_f + @course.unit.snack_plus_drink_price.to_f + @course.unit.coffe_price.to_f %>
+<% custo = custof/(11.4) * 100 %>
+<% enade = @course.enade * 20 %>
+<% idh = @course.unit.citie.idh * 100%>
+<% cc = @course.cc * 20%>
+
+
+<div id='chart'>
+
+ <h2> <% radar_series = [
+    {
+      name: "#{@course.name.upcase} - #{@course.unit.institution.name.upcase}",
+
+      data: { "conceito ENADE"=>enade, "Facilidades"=>count, "Custo"=>custo, "IDH"=>idh, "Conceito cc"=>cc }
+    },
+
+    {
+      name: "MEDICINA UFBA",
+      data: {"conceito ENADE"=>78, "Facilidades"=>70, "Custo"=>60, "IDH"=>70, "Conceito cc"=>80}
+    }
+  ] %>
+  <%= radar_chart(
+    radar_series,
+    {title: "Course Radar Chart", markers: {size: 4}, theme: 'palette5'}
+  ) %></h2>
+
+</div>
