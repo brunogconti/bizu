@@ -65,15 +65,19 @@
   </tr>
 </table>
 
-<!--<h5>Últimos resultados do SiSU</h5>
+<h5>Último resultado do SiSU</h5>
+<p><i class="fa fa-play" aria-hidden="true"></i> Referência: <%= course.segments.last.sisu_edition %></p>
 
-<p>tabela com as notas de corte aqui</p>
-
-<% course.segments.each do |segment| %>
-  <%= segment.sisu_edition %>
-<% end %>
-
-<% course.segments.last.passing_scores.each do |score| %>
-  <p><%= score.name %></p>
-  <p><%= score.passing_score %></p>
-<% end %>-->
+<table>
+  <% course.segments.last.passing_scores.each do |score| %>
+    <tr>
+      <td class="p-0">
+        <p class="text-justify m-0 p-1 br-divider vertical mx-half mx-sm-1"><%= score.name %></p>
+      </td>
+      <td class="p-0">
+        <p class="text-left m-0 p-1"><%= score.passing_score %></p>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
