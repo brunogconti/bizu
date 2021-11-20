@@ -365,22 +365,22 @@ require 'faker'
 
 # # -----------------------------------
 
-puts "Start creating Passing Scores"
+# puts "Start creating Passing Scores"
 
-Course.all.each do |course|
-  uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
-  response = Net::HTTP.get(uri)
-  hash_array = JSON.parse(response)
+# Course.all.each do |course|
+#   uri = URI("https://sisusimulator.com.br/api/curso.php?parameter=id&id=#{course.api_id}")
+#   response = Net::HTTP.get(uri)
+#   hash_array = JSON.parse(response)
 
-  hash_array[0]["notasDeCorte"].each do |hash|
-    puts "Creating #{hash['descricao']}"
-    PassingScore.create!(
-      segment: Segment.find_by(course: course, sisu_edition: hash['ano']),
-      name: hash['descricao'],
-      passing_score: hash['nota']
-    )
-  end
-end
+#   hash_array[0]["notasDeCorte"].each do |hash|
+#     puts "Creating #{hash['descricao']}"
+#     PassingScore.create!(
+#       segment: Segment.find_by(course: course, sisu_edition: hash['ano']),
+#       name: hash['descricao'],
+#       passing_score: hash['nota']
+#     )
+#   end
+# end
 
 puts "Passing Scores created"
 
