@@ -21,7 +21,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Javascript ES6](https://262.ecma-international.org/6.0/)
 - [Mapbox](https://www.mapbox.com/)
 - [Select2](https://select2.org/)
-- [PostgreSQl](https://www.postgresql.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## 💻 Projeto
 
@@ -31,7 +31,7 @@ O Bizu é uma aplicação que mostra a oferta de cursos no SiSu acrescida de dad
 
 No link abaixo você encontra o protótipo do projeto web no Heroku.
 
-- [Airdorms](https://bizu-app.herokuapp.com/)
+- [Bizu](https://bizu-app.herokuapp.com/)
 
 ## 🧠 Desafio
 
